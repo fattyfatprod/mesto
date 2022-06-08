@@ -1,0 +1,28 @@
+.popup__sumbit {
+    box-sizing: border-box;
+    padding: 0;
+    border: none;
+    width: 100%;
+    min-height: 46px;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    line-height: 17px;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  
+  @media screen and (min-width: 900px) {
+    .popup__sumbit {
+      font-size: 18px;
+      line-height: 22px;
+      min-height: 50px;
+    }
+  
+    .popup__sumbit:hover {
+      opacity: .8;
+    }
+  }

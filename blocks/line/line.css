@@ -1,0 +1,9 @@
+.line {
+    padding: 42px 19px 0;
+  }
+  
+  @media screen and (min-width: 900px) {
+    .main {
+      padding: 40px 0 0;
+    }
+  }

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="pages/index.css">
+    <title>Mesto</title>
+</head>
+
+<body class="page">
+    <header class="header">
+        <a class="logo">
+            <img src="./image/logo.svg" class="header__img" alt="Белый лого">
+        </a>
+    </header>
+    <main class="line">
+        <section class="profile">
+            <img class="profile__avatar" src="image/avatar.jpg" alt="Жак-Ив Кусто">
+            <div class="profile__wrapper-info">
+                <div class="profile__wrapper-title">
+                    <h1 class="profile__title">Жак-Ив Кусто</h1>
+                    <button class="profile__edit-button" type="button"></button>
+                </div>
+                <p class="profile__subtitle">Исследователь океана</p>
+            </div>
+            <button class="profile__add-button" type="button"></button>
+        </section>
+        <section class="cards">
+            <ul class="cards__list">
+                <li class="cards__item">
+                    <img class="cards__img" src="image/cards_amsterdam.jpg" alt="Амстердам">
+                    <div class="cards__wrapper-title">
+                        <h2 class="cards__title">Амстердам</h2>
+                        <button class="cards__like-button" type="button" aria-label="Кнопка нравится"></button>
+                    </div>
+                </li>
+                <li class="cards__item">
+                    <img class="cards__img" src="image/cards_dresden.jpg" alt="Дрезден">
+                    <div class="cards__wrapper-title">
+                        <h2 class="cards__title">Дрезден</h2>
+                        <button class="cards__like-button" type="button" aria-label="Кнопка нравится"></button>
+                    </div>
+                </li>
+                <li class="cards__item">
+                    <img class="cards__img" src="image/cards_provence.jpg" alt="Прованс">
+                    <div class="cards__wrapper-title">
+                        <h2 class="cards__title">Прованс</h2>
+                        <button class="cards__like-button" type="button" aria-label="Кнопка нравится"></button>
+                    </div>
+                </li>
+                <li class="cards__item">
+                    <img class="cards__img" src="image/cards_elbrus.jpg" alt="Эльбрус">
+                    <div class="cards__wrapper-title">
+                        <h2 class="cards__title">Эльбрус</h2>
+                        <button class="cards__like-button" type="button" aria-label="Кнопка нравится"></button>
+                    </div>
+                </li>
+                <li class="cards__item">
+                    <img class="cards__img" src="image/cards_karachaevsk.jpg" alt="Карачаево-Черкессия">
+                    <div class="cards__wrapper-title">
+                        <h2 class="cards__title">Карачаево-Черкессия</h2>
+                        <button class="cards__like-button" type="button" aria-label="Кнопка нравится"></button>
+                    </div>
+                </li>
+                <li class="cards__item">
+                    <img class="cards__img" src="image/cards_dombay.jpg" alt="Домбай">
+                    <div class="cards__wrapper-title">
+                        <h2 class="cards__title">Домбай</h2>
+                        <button class="cards__like-button" type="button" aria-label="Кнопка нравится"></button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </main>
+    <footer class="footer">
+        <p class="footer__copyright">© 2020 Mesto Russia</p>
+      </footer>
+      <div class="popup">
+        <div class="popup__container">
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <form class="popup__form" action="https://echo.htmlacademy.ru" name="popup-profile">
+              <input class="popup__input popup__input_profile_name" type="text" name="popup-name">
+              <input class="popup__input popup__input_profile_profession" type="text" name="popup-profession">
+              <button class="popup__sumbit" type="submit">Сохранить</button>
+            </form>
+            <button class="popup__close-button" type="button"></button>
+      </div>
+
+    <script src="scripts/index.js"></script>
+</body>
+
+</html>

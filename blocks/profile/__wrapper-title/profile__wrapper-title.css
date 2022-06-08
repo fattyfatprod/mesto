@@ -1,0 +1,12 @@
+.profile__wrapper-title {
+    display: flex;
+    position: relative;
+    margin-bottom: 10px;
+  }
+  
+  @media screen and (min-width: 900px) {
+    .profile__wrapper-title {
+      align-items: center;
+      column-gap: 18px;
+    }
+  }
