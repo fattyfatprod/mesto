@@ -1,9 +1,10 @@
 .line {
-    padding: 42px 19px 0;
+  padding: 0 auto;
+}
+
+@media screen and(min-width: 900px) {
+  .line {
+    padding: 46px 0px 0px;
   }
   
-  @media screen and (min-width: 900px) {
-    .main {
-      padding: 40px 0 0;
-    }
-  }
+}

@@ -15,14 +15,15 @@
     cursor: pointer;
 }
 
+.popup__sumbit:hover {
+    opacity: .8;
+}
+
+
 @media screen and (min-width: 900px) {
     .popup__sumbit {
         font-size: 18px;
         line-height: 22px;
         min-height: 50px;
-    }
-
-    .popup__sumbit:hover {
-        opacity: .8;
     }
 }

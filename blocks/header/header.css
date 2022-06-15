@@ -1,11 +1,12 @@
 .header {
-    box-sizing: border-box;
-    min-height: 56px;
-    border-bottom: 1px solid rgba(84, 84, 84, .7);
+  box-sizing: border-box;
+  border-bottom: 1px solid #545454;
+  border-bottom: 1px solid rgba(84, 84, 84, .7);
+  padding-bottom: 41px;
+}
+
+@media screen and (max-width: 767px) {
+  .header {
+    width: 100%;
   }
-  
-  @media screen and (min-width: 900px) {
-    .header {
-      min-height: 74px;
-    }
-  }
+}

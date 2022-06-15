@@ -1,6 +1,7 @@
 .header__img {
   width: 104px;
   height: 24px;
+  margin: 0;
 }
 
 @media screen and (min-width: 900px) {

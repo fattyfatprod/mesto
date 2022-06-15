@@ -14,7 +14,7 @@ function openPopup() {
 }
 
 function closePopup(evt) {
-    popup.classList.remove('popup_open')
+  popup.classList.remove('popup_open')
 }
 
 function editProfileHandler(evt) {
