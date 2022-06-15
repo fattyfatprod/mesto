@@ -1,0 +1,7 @@
+.elements__element {
+  margin: 0;
+  max-width: 282px;
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+}
