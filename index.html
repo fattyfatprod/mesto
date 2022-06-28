@@ -1,0 +1,138 @@
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesto</title>
+    <link rel="stylesheet" href="./pages/index.css">
+</head>
+
+<body class="root">
+    <header class="header">
+        <img src="./image/logo.svg" alt="логотип" class="header__logo">
+    </header>
+    <main>
+        <section class="profile">
+            <img src="./image/avatar.jpg" alt="Аватар" class="profile__image">
+            <div class="profile__name-container">
+                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                <button class="profile__edit-button" type="button"></button>
+                <p class="profile__job">Исследователь океана</p>
+            </div>
+            <button class="profile__add-button" type="button"></button>
+        </section>
+        <section>
+            <ul class="gallery">
+                <li class="gallery__card">
+                    <button class="gallery__delete" type="button"></button>
+                    <img class="gallery__image" src="./image/cards_amsterdam.jpg" alt="Амстердам">
+                    <div class="gallery__caption">
+                        <h2 class="gallery__text">Амстердам</h2>
+                        <button class="gallery__like" type="button"></button>
+                    </div>
+                </li>
+                <li class="gallery__card">
+                    <button class="gallery__delete" type="button"></button>
+                    <img class="gallery__image" src="./image/cards_dresden.jpg" alt="Дресден">
+                    <div class="gallery__caption">
+                        <h2 class="gallery__text">Дресден</h2>
+                        <button class="gallery__like" type="button"></button>
+                    </div>
+                </li>
+                <li class="gallery__card">
+                    <button class="gallery__delete" type="button"></button>
+                    <img class="gallery__image" src="./image/cards_provence.jpg" alt="Прованс">
+                    <div class="gallery__caption">
+                        <h2 class="gallery__text">Прованс</h2>
+                        <button class="gallery__like" type="button"></button>
+                    </div>
+                </li>
+                <li class="gallery__card">
+                    <button class="gallery__delete" type="button"></button>
+                    <img class="gallery__image" src="./image/cards_dombay.jpg" alt="Домбай">
+                    <div class="gallery__caption">
+                        <h2 class="gallery__text">Домбай</h2>
+                        <button class="gallery__like" type="button"></button>
+                    </div>
+                </li>
+                <li class="gallery__card">
+                    <button class="gallery__delete" type="button"></button>
+                    <img class="gallery__image" src="./image/cards_elbrus.jpg" alt="Эьбрус">
+                    <div class="gallery__caption">
+                        <h2 class="gallery__text">Эьбрус</h2>
+                        <button class="gallery__like" type="button"></button>
+                    </div>
+                </li>
+                <li class="gallery__card">
+                    <button class="gallery__delete" type="button"></button>
+                    <img class="gallery__image"
+                        src="./image/cards_karachaevsk.jpg"
+                        alt="Карачаевск">
+                    <div class="gallery__caption">
+                        <h2 class="gallery__text">Карачаевск</h2>
+                        <button class="gallery__like" type="button"></button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </main>
+    <footer class="footer">
+        <p class="footer__copyright">© 2022 Mesto Russia</p>
+    </footer>
+    <div class="popup popup_type_edit-profile">
+        <div class="popup__container">
+            <button class="popup__close-button" type="button"></button>
+            <form action="save" class="form" name="profile-info">
+                <h3 class="form__title">Редактировать профиль</h3>
+                <input class="form__input form__input_type_name" type="text" placeholder="Имя" name="profile-name"
+                    value="Жак-Ив Кусто" required="">
+                <input class="form__input form__input_type_job" type="text" placeholder="Вид деятельности"
+                    name="profile-job" value="Исследователь океана" required="">
+                <input class="form__submit" type="submit" value="Сохранить">
+            </form>
+        </div>
+    </div>
+
+    <div class="popup popup_type_add-card">
+        <div class="popup__container">
+            <button class="popup__close-button" type="button"></button>
+            <form action="save" class="form" name="new-place">
+                <h3 class="form__title">Новое место</h3>
+                <input class="form__input form__input_type_card-name" type="text" name="card-name"
+                    placeholder="Название" required="">
+                <input class="form__input form__input_type_card-url" type="text" name="card-url"
+                    placeholder="Ссылка на картинку" required="">
+                <input class="form__submit" type="submit" value="Создать">
+            </form>
+        </div>
+    </div>
+
+    <div class="popup popup_type_fs">
+        <figure class="popup__fullscreen">
+            <button class="popup__close-button" type="button"></button>
+            <img class="popup__image">
+            <figcaption class="popup__caption"></figcaption>
+        </figure>
+    </div>
+
+    <template id="card-template">
+        <li class="gallery__card">
+            <button class="gallery__delete" type="button"></button>
+            <img class="gallery__image">
+            <div class="gallery__caption">
+                <h2 class="gallery__text"></h2>
+                <button class="gallery__like" type="button"></button>
+            </div>
+        </li>
+    </template>
+
+    <div style="background-image: url(./images/gallery-trash.svg);"></div>
+
+    <script src="./scripts/initial-cards.js"></script>
+    <script src="./scripts/index.js" defer=""></script>
+
+
+</body>
+
+</html>
