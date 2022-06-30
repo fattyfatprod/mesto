@@ -18,4 +18,4 @@ Javasript Native
 БЭМ 
 GIT 
 
-ссыка на проект: https://github.com/fattyfatprod/mesto/tree/master
+ссыка на проект: https://github.com/fattyfatprod/mesto
