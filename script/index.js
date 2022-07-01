@@ -198,7 +198,7 @@ function createCard(element) {
  
   const cardDelete = cardElement.querySelector('.gallery__delete')
   cardDelete.addEventListener('click', (evt) => {
-    evt.target.parentElement()
+    cardElement.remove()
   })
 
  
