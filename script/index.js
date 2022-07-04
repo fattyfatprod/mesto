@@ -155,18 +155,19 @@ function submitAddCardForm(evt) {
 
 
 
-  let newCard = []
-  newCard.name = cardNameInput.value
-  newCard.link = cardUrlInput.value
+  const cardData = {
+    name: cardNameInput.value,
+    link: cardUrlInput.value
+  }
 
-  let newCardElement = createCard(newCard)
+  const newCardElement = createCard(newCard)
 
   addCard(newCardElement)
 
   cardNameInput.value = ''
   cardUrlInput.value = ''
 
-  
+
 
 
   closePopup(popupElementCard)
