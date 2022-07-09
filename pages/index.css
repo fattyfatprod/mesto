@@ -31,6 +31,7 @@
 @import url(../blocks/form/__submit/popup__submit.css);
 @import url(../blocks/form/__submit/_disabled/form__submit_disabled.css);
 @import url(../blocks/form/__erorr/form__error.css);
+@import url(../blocks/form/__erorr/_visible/form__error_visible.css);
 
 
 @import url(../blocks/popup/popup.css);

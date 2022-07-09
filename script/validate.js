@@ -1,3 +1,4 @@
+//Валидация нескольких полей и форм//
 
 function showInputError(formElement, inputElement, errorMessage, classSet) {
     const errorElement = formElement.querySelector(`.${inputElement.name}-error`);
@@ -15,15 +16,19 @@ function hideInputError(formElement, inputElement, classSet) {
 };
 
 
+//Взаимодействие с другими элементами DOM//
+
 function checkInputValidity(formElement, inputElement, classSet) {
     if (!inputElement.validity.valid) {
-      
+
         showInputError(formElement, inputElement, inputElement.validationMessage, classSet);
     } else {
-      
+
         hideInputError(formElement, inputElement, classSet);
     }
 };
+
+// Недостающие функции. Вызываем функцию toggleButtonState перед тем как её объявять//
 
 function hasInvalidInput(inputList) {
     return inputList.some((inputElement) => {
@@ -69,7 +74,7 @@ function enableValidation(classSet) {
 };
 
 
-
+//Вкючить проверку//
 
 enableValidation({
     formSelector: '.form',

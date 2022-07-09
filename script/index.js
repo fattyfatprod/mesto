@@ -1,3 +1,4 @@
+
 //openPopup
 function openPopup(popup) {
   popup.classList.add('popup_opend')
@@ -143,11 +144,23 @@ const cardUrlInput = formElementCard.querySelector('.form__input_type_card-url')
 
 const addButton = document.querySelector('.profile__add-button')
 
+function handleSubmitAddCardForm(evt) {
+  evt.preventDefault(); 
+  const newCard = {}
+  newCard.name = cardNameInput.value
+  newCard.link = cardUrlInput.value
 
-const createButtonCard = formElementCard.querySelector('.form__submit')
+  
+  const newCardElement = createCard(newCard)
+ 
+  addCard(newCardElement)
 
 
+  cardNameInput.value = ''
+  cardUrlInput.value = ''
 
+  closePopup(popupElementCard)
+}
 
 
 function submitAddCardForm(evt) {
@@ -260,7 +273,20 @@ initialCards.forEach(element => {
 })
 
 
+popupElementCard.addEventListener('submit', handleSubmitAddCardForm)
 
+
+addButton.addEventListener('click', () => {
+  openPopup(popupElementCard)
+})
+
+closeButtonCard.addEventListener('click', () => {
+  closePopup(popupElementCard)
+})
+
+closeButtonFullscreen.addEventListener('click', () => {
+  closePopup(popupElementFullscreen)
+})
 
 
 
