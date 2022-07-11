@@ -45,7 +45,6 @@
             </form>
         </div>
     </div>
-
     <div class="popup popup_type_add-card">
         <div class="popup__container">
             <button class="popup__close-button" type="button"></button>
@@ -53,11 +52,11 @@
                 <h3 class="form__title">Новое место</h3>
                 <input class="form__input form__input_type_card-name" type="text" name="card-name"
                     placeholder="Название" required minlength="2" maxlength="30">
-                    <span class="form__error card-name-error"></span>
-                <input class="form__input form__input_type_card-url" type="text" name="card-url"
-                    placeholder="Ссылка на картинку" required="">
-                    <span class="form__error card-url-error"></span>
-                    <button class="form__submit" type="submit">Создать</button>
+                <span class="form__error card-name-error"></span>
+                <input class="form__input form__input_type_card-url" type="url" name="card-url"
+                    placeholder="Ссылка на картинку" required>
+                <span class="form__error card-url-error"></span>
+                <button class="form__submit" type="submit">Создать</button>
             </form>
         </div>
     </div>

@@ -61,6 +61,7 @@ const cardNameInput = formElementCard.querySelector('.form__input_type_card-name
 const cardUrlInput = formElementCard.querySelector('.form__input_type_card-url')
 
 
+
 const addButton = profile.querySelector('.profile__add-button')
 
 
@@ -95,23 +96,24 @@ function handleSubmitEditProfileForm(evt) {
 function handleSubmitAddCardForm(evt) {
   evt.preventDefault();
 
+
+
   const newCard = {}
   newCard.name = cardNameInput.value
   newCard.link = cardUrlInput.value
 
   
+
   const newCardElement = createCard(newCard)
 
   addCard(newCardElement)
 
 
   //Пустые поля
-  cardNameInput.value = ''
-  cardUrlInput.value = ''
+  evt.target.reset()
 
-
-
-  closePopup(popupElementCard)
+ 
+  closePopup(popupElementCard) 
 }
 
 
@@ -135,7 +137,7 @@ function createCard(element) {
 
   const cardDelete = cardElement.querySelector('.gallery__delete')
   cardDelete.addEventListener('click', (evt) => {
-    cardDelete.parentElement.remove()
+    cardDelete.closest('.gallery__card').remove()
   })
 
 
@@ -144,28 +146,37 @@ function createCard(element) {
     imageFullscreen.src = element.link
     imageFullscreen.alt = element.name
     imageCaption.textContent = element.name
+    
+  
   })
 
   return cardElement
 }
+
+
 
 function addCard(cardElement) {
 
   galleryContainer.prepend(cardElement)
 }
 
-//Закрытие попапа через overlay и Escape
+
 
 function openPopup(popup) {
   popup.classList.add('popup_opend')
-
   document.addEventListener('keyup', closeByEsc)
   popup.addEventListener('click', closeByClick)
+
+
+
 }
+
+
 
 function closePopup(popup) {
   popup.classList.remove('popup_opend')
   document.removeEventListener('keyup', closeByEsc)
+  popup.removeEventListener('click', closeByClick)
 
 }
 
@@ -180,10 +191,11 @@ function closeByEsc(evt) {
 
 function closeByClick(evt) {
   if (evt.target.classList.contains('popup_opend')) {
-    const openedPopup = document.querySelector('.popup_opend')
-    closePopup(openedPopup)
+    closePopup(evt.target)
+
   }
 }
+
 
 
 // Прикрепляем обработчик к кнопке сохранить в форме profile:
@@ -206,6 +218,8 @@ popupElementCard.addEventListener('submit', handleSubmitAddCardForm)
 // Обработка кнопки Редактировать, открываем форму рекдактирования карточки
 addButton.addEventListener('click', () => {
   openPopup(popupElementCard)
+ 
+    
 })
 
 
