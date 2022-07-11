@@ -99,7 +99,7 @@ function handleSubmitAddCardForm(evt) {
   newCard.name = cardNameInput.value
   newCard.link = cardUrlInput.value
 
-
+  
   const newCardElement = createCard(newCard)
 
   addCard(newCardElement)
@@ -108,6 +108,7 @@ function handleSubmitAddCardForm(evt) {
   //Пустые поля
   cardNameInput.value = ''
   cardUrlInput.value = ''
+
 
 
   closePopup(popupElementCard)
@@ -165,6 +166,7 @@ function openPopup(popup) {
 function closePopup(popup) {
   popup.classList.remove('popup_opend')
   document.removeEventListener('keyup', closeByEsc)
+
 }
 
 
