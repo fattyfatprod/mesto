@@ -97,7 +97,6 @@ function handleSubmitAddCardForm(evt) {
   evt.preventDefault();
 
 
-
   const newCard = {}
   newCard.name = cardNameInput.value
   newCard.link = cardUrlInput.value
@@ -109,12 +108,17 @@ function handleSubmitAddCardForm(evt) {
   addCard(newCardElement)
 
 
+
+
   //Пустые поля
+
+
   evt.target.reset()
 
- 
+
   closePopup(popupElementCard) 
 }
+  
 
 
 //Добовяем карточку в начало 
@@ -166,10 +170,12 @@ function openPopup(popup) {
   popup.classList.add('popup_opend')
   document.addEventListener('keyup', closeByEsc)
   popup.addEventListener('click', closeByClick)
+  
 
+ 
+  }
+  
 
-
-}
 
 
 
@@ -192,6 +198,7 @@ function closeByEsc(evt) {
 function closeByClick(evt) {
   if (evt.target.classList.contains('popup_opend')) {
     closePopup(evt.target)
+    
 
   }
 }
@@ -205,6 +212,8 @@ popupElementProfile.addEventListener('submit', handleSubmitEditProfileForm)
 
 editButton.addEventListener('click', () => {
   openPopup(popupElementProfile)
+  
+
 })
 
 

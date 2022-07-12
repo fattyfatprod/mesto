@@ -20,10 +20,8 @@ function hideInputError(formElement, inputElement, classSet) {
 
 function checkInputValidity(formElement, inputElement, classSet) {
     if (!inputElement.validity.valid) {
-
         showInputError(formElement, inputElement, inputElement.validationMessage, classSet);
     } else {
-
         hideInputError(formElement, inputElement, classSet);
     }
 };
@@ -41,7 +39,6 @@ function toggleButtonState(inputList, buttonElement, classSet) {
     if (hasInvalidInput(inputList)) {
         buttonElement.classList.add(classSet.inactiveButtonClass)
         buttonElement.setAttribute('disabled', 'disabled')
-        
     } else {
         buttonElement.classList.remove(classSet.inactiveButtonClass)
         buttonElement.removeAttribute('disabled', 'disabled')
@@ -63,15 +60,22 @@ function setEventListeners(formElement, classSet) {
             toggleButtonState(inputList, buttonElement, classSet);
         });
     });
+
+    formElement.addEventListener('submit', function (evt) {
+        evt.preventDefault();
+    });
+
+    formElement.addEventListener('reset', function () {
+        setTimeout(function () {
+            toggleButtonState(inputList, buttonElement, classSet);
+        }, 0);
+    });
 };
 
 
 function enableValidation(classSet) {
     const formList = Array.from(document.querySelectorAll(classSet.formSelector));
     formList.forEach((formElement) => {
-        formElement.addEventListener('submit', function (evt) {
-            evt.preventDefault();
-        });
         setEventListeners(formElement, classSet);
     });
 };
