@@ -17,5 +17,6 @@ CSS
 Javasript Native
 БЭМ 
 GIT 
+ООП
 
 ссыка на проект: https://github.com/fattyfatprod/mesto
