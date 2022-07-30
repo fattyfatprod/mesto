@@ -41,7 +41,7 @@ function handleCardClick(name, link) {
   imageFullscreen.src = link
   imageFullscreen.alt = name
   imageCaption.textContent = name
-  openPopup(popupElementFullscreen)
+  openPopup()
 }
 
 
