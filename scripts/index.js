@@ -32,19 +32,6 @@ const initialCards = [
 
 import { Card } from "./Card.js";
 
-function createCard(newCardName, newCardLink) {
-  const card = new Card(newCardName, newCardLink, '#card-template', openPopup, handleCardClick)
-  return card.generateCard();
-}
-
-function handleCardClick(name, link) {
-  imageFullscreen.src = link
-  imageFullscreen.alt = name
-  imageCaption.textContent = name
-  openPopup()
-}
-
-
 
 
 
@@ -218,4 +205,14 @@ initialCards.forEach(element => {
 
 
 
+function createCard(newCardName, newCardLink) {
+  const card = new Card(newCardName, newCardLink, '#card-template', openPopup, handleCardClick)
+  return card.generateCard();
+}
 
+function handleCardClick(name, link) {
+  imageFullscreen.src = link
+  imageFullscreen.alt = name
+  imageCaption.textContent = name
+  openPopup();
+}

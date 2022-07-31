@@ -1,6 +1,5 @@
 export class Card {
-    // Передаем в конструктор все данные необходимые для создания карточки:
-    // селектор темплейта и данные для открытия фулскин + саму функцию фулскрин, как колбек
+    // Передаем в конструктор все данные необходимые для создания карточки
     constructor(name, link, templateSelector, openPopup, handleCardClick) {
         this._name = name;
         this._link = link;
@@ -12,7 +11,7 @@ export class Card {
 
     _getTemplate() {
         const cardElement = document
-             // забираем разметку из HTML и клонируем элемент
+            // забираем разметку из HTML и клонируем элемент
             .querySelector(this._templateSelector)
             .content
             .querySelector('.gallery__card')
@@ -26,6 +25,9 @@ export class Card {
         this._galleryImage = this._element.querySelector('.gallery__image');
         this._galleryLike = this._element.querySelector('.gallery__like');
         this._galleryDelete = this._element.querySelector('.gallery__delete');
+        this._setEventListeners();
+
+
         // Подпись карточки
         this._element.querySelector('.gallery__text').textContent = this._name;
 
@@ -34,7 +36,7 @@ export class Card {
         this._galleryImage.src = this._link;
 
 
-
+    
         return this._element;
     }
 
