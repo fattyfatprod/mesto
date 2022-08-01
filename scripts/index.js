@@ -31,13 +31,21 @@ const initialCards = [
 
 
 import { Card } from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
 
-
+const form = {
+  formSelector: '.form',
+  inputSelector: '.form__input',
+  submitButtonSelector: '.form__submit',
+  inactiveButtonClass: 'form__submit_disabled',
+  inputErrorClass: 'form__input_type_error',
+  errorClass: 'form__error_visible'
+}
 
 
 // Находим модальное окно PROFILE
 const popupElementProfile = document.querySelector('.popup_type_edit-profile')
-// Находим кнопку закрытия модального окна профиля
+// Находим кнопку закрытия окна профиля
 const closeButtonProfile = popupElementProfile.querySelector('.popup__close-button')
 
 // Находим форму профиля в DOM
@@ -74,13 +82,13 @@ const addButton = profile.querySelector('.profile__add-button')
 // Находим элемент figure
 const figureElement = document.querySelector('.popup__fullscreen')
 
-// Находим элемент фулскрин картинку
+// Находим элемент фулскрин 
 const imageFullscreen = figureElement.querySelector('.popup__image')
 
-// Находим элемент подпись к фулскрин картинке
+// Находим элемент подпись к фулскрин 
 const imageCaption = figureElement.querySelector('.popup__caption')
 
-//   Добавляем 6 карточек из "коробки" через JavaScript
+//   Добавляем 6 карточек 
 const galleryContainer = document.querySelector('.gallery')
 const cardTemplate = document.querySelector('#card-template').content
 
@@ -91,8 +99,7 @@ const closeButtonFullscreen = popupElementFullscreen.querySelector('.popup__clos
 
 // Обработчик «отправки» формы profile
 function handleSubmitEditProfileForm(evt) {
-  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  // Так мы можем определить свою логику отправки.
+  evt.preventDefault(); 
 
   // Заменяем текст в элементах профиля на введенное содержимое полей ввода
   profileName.textContent = nameInput.value
@@ -104,8 +111,7 @@ function handleSubmitEditProfileForm(evt) {
 
 // Обработчик «отправки» формы Card
 function handleSubmitAddCardForm(evt) {
-  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-  // Так мы можем определить свою логику отправки.
+  evt.preventDefault(); 
 
   const newCard = {}
   newCard.name = cardNameInput.value
@@ -119,7 +125,7 @@ function handleSubmitAddCardForm(evt) {
   // Очищаем поля ввода
   evt.target.reset()
 
-  // При сохранении данных из формы, нужно ее закрыть
+  // Закрытие формы
   closePopup(popupElementCard)
 }
 
@@ -131,7 +137,7 @@ function addCard(cardElement) {
 // Объявляем функцию открытия попапа
 function openPopup(popup) {
   popup.classList.add('popup_opend')
-  // Вешаем слушатель события нажатия кнопки и клика для закрытия по Esc и клику по оверлею
+  // Вешаем слушатель события для закрытия по Esc и клику по оверлею
   document.addEventListener('keyup', closeByEsc)
   popup.addEventListener('click', closeByClick)
 }
@@ -202,7 +208,10 @@ initialCards.forEach(element => {
 })
 
 
-
+const popupValitatorProfile = new FormValidator(form, popupElementProfile)
+popupValitatorProfile.enableValidation()
+const popupValitatorCard = new FormValidator(form, popupElementCard)
+popupValitatorCard.enableValidation()
 
 
 function createCard(newCardName, newCardLink) {
