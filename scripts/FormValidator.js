@@ -1,18 +1,17 @@
-
 export class FormValidator {
-    constructor(form, formElement) {
-        this._inputSelector = form.inputSelector;
-        this._submitButtonSelector = form.submitButtonSelector;
-        this._inactiveButtonClass = form.inactiveButtonClass;
-        this._inputErrorClass = form.inputErrorClass;
-        this._errorClass = form.errorClass;
+    constructor(validationConfig, formElement) {
+        this._inputSelector = validationConfig.inputSelector;
+        this._submitButtonSelector = validationConfig.submitButtonSelector;
+        this._inactiveButtonClass = validationConfig.inactiveButtonClass;
+        this._inputErrorClass = validationConfig.inputErrorClass;
+        this._errorClass = validationConfig.errorClass;
 
         this._formElement = formElement;
 
         this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
         this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
     }
-   
+
 
 
 
@@ -62,30 +61,6 @@ export class FormValidator {
         }
     }
 
-    _setEventListeners(formElement, classSet) {
-        const inputList = Array.from(formElement.querySelectorAll(classSet.inputSelector));
-        const buttonElement = formElement.querySelector(classSet.submitButtonSelector)
-    
-        _toggleButtonState(inputList, buttonElement, classSet);
-    
-        inputList.forEach((inputElement) => {
-            inputElement.addEventListener('input', function () {
-                checkInputValidity(formElement, inputElement, classSet);
-                toggleButtonState(inputList, buttonElement, classSet);
-            });
-        });
-    
-        formElement.addEventListener('submit', function (evt) {
-            evt.preventDefault();
-        });
-    
-        formElement.addEventListener('reset', function () {
-            setTimeout(function () {
-                toggleButtonState(inputList, buttonElement, classSet);
-            }, 0);
-        });
-    };
-    
 
 
 

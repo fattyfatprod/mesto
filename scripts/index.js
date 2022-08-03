@@ -1,6 +1,4 @@
 
-
-
 //Ссыки на карточки
 const initialCards = [
   {
@@ -33,7 +31,7 @@ const initialCards = [
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
 
-const form = {
+const validationConfig = {
   formSelector: '.form',
   inputSelector: '.form__input',
   submitButtonSelector: '.form__submit',
@@ -46,7 +44,7 @@ const form = {
 // Находим модальное окно PROFILE
 const popupElementProfile = document.querySelector('.popup_type_edit-profile')
 // Находим кнопку закрытия окна профиля
-const closeButtonProfile = popupElementProfile.querySelector('.popup__close-button')
+const popupProfilecloseButton = popupElementProfile.querySelector('.popup__close-button')
 
 // Находим форму профиля в DOM
 const formElementProfile = popupElementProfile.querySelector('.form')
@@ -67,7 +65,7 @@ const editButton = profile.querySelector('.profile__edit-button')
 // Находим модальное окно CARD
 const popupElementCard = document.querySelector('.popup_type_add-card')
 // Находим кнопку закрытия модального окна card
-const closeButtonCard = popupElementCard.querySelector('.popup__close-button')
+const popupCardcloseButton = popupElementCard.querySelector('.popup__close-button')
 
 // Находим форму card в DOM
 const formElementCard = popupElementCard.querySelector('.form')
@@ -95,11 +93,11 @@ const cardTemplate = document.querySelector('#card-template').content
 // Находим модальное окно FULLSCREEN
 const popupElementFullscreen = document.querySelector('.popup_type_fs')
 // Находим кнопку закрытия модального окна card
-const closeButtonFullscreen = popupElementFullscreen.querySelector('.popup__close-button')
+const popupFullscreencloseButton = popupElementFullscreen.querySelector('.popup__close-button')
 
 // Обработчик «отправки» формы profile
 function handleSubmitEditProfileForm(evt) {
-  evt.preventDefault(); 
+  evt.preventDefault();
 
   // Заменяем текст в элементах профиля на введенное содержимое полей ввода
   profileName.textContent = nameInput.value
@@ -111,7 +109,7 @@ function handleSubmitEditProfileForm(evt) {
 
 // Обработчик «отправки» формы Card
 function handleSubmitAddCardForm(evt) {
-  evt.preventDefault(); 
+  evt.preventDefault();
 
   const newCard = {}
   newCard.name = cardNameInput.value
@@ -176,7 +174,7 @@ editButton.addEventListener('click', () => {
 })
 
 // Обработка кнопки крестика, закрываем форму profile
-closeButtonProfile.addEventListener('click', () => {
+popupProfilecloseButton.addEventListener('click', () => {
   closePopup(popupElementProfile)
 })
 
@@ -192,12 +190,12 @@ addButton.addEventListener('click', () => {
 })
 
 // Обработка кнопки крестика, закрываем форму редактирования карточки
-closeButtonCard.addEventListener('click', () => {
+popupCardcloseButton.addEventListener('click', () => {
   closePopup(popupElementCard)
 })
 
 // Обработка кнопки крестика, закрываем фуллскрин
-closeButtonFullscreen.addEventListener('click', () => {
+popupFullscreencloseButton.addEventListener('click', () => {
   closePopup(popupElementFullscreen)
 })
 
@@ -207,18 +205,20 @@ initialCards.forEach(element => {
   addCard(cardElement);
 })
 
+//Переносим данные из формвалидатор
 
-const popupValitatorProfile = new FormValidator(form, popupElementProfile)
+const popupValitatorProfile = new FormValidator(validationConfig, popupElementProfile)
 popupValitatorProfile.enableValidation()
-const popupValitatorCard = new FormValidator(form, popupElementCard)
+const popupValitatorCard = new FormValidator(validationConfig, popupElementCard)
 popupValitatorCard.enableValidation()
 
-
+//Объявяем функцию новой ваилидной карточки 
 function createCard(newCardName, newCardLink) {
   const card = new Card(newCardName, newCardLink, '#card-template', openPopup, handleCardClick)
   return card.generateCard();
 }
 
+//Переносим данные в попап
 function handleCardClick(name, link) {
   imageFullscreen.src = link
   imageFullscreen.alt = name

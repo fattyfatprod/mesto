@@ -5,7 +5,6 @@ export class Card {
         this._link = link;
         this._templateSelector = templateSelector;
         // Передаем функцию для открытия фулскрин
-        this._openPopup = openPopup;
         this._handleCardClick = handleCardClick;
     }
 
@@ -14,7 +13,7 @@ export class Card {
             // забираем разметку из HTML и клонируем элемент
             .querySelector(this._templateSelector)
             .content
-            .querySelector('.gallery__card')
+            .querySelector('.card')
             .cloneNode(true);
 
         return cardElement;
