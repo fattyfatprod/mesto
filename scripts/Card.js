@@ -1,6 +1,6 @@
 export class Card {
     // Передаем в конструктор все данные необходимые для создания карточки
-    constructor(name, link, templateSelector, openPopup, handleCardClick) {
+    constructor(name, link, templateSelector, handleCardClick) {
         this._name = name;
         this._link = link;
         this._templateSelector = templateSelector;
