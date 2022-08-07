@@ -19,10 +19,10 @@
 @import url(../blocks/card/card.css);
 
 @import url(../blocks/gallary/gallery.css);
+@import url(../blocks/gallary/__image/gallery__image.css);
 @import url(../blocks/gallary/__text/gallery__text.css);
 @import url(../blocks/gallary/__like/gallery__like.css);
 @import url(../blocks/gallary/__like/_active/gallery__like_active.css);
-@import url(../blocks/gallary/__image/gallery__image.css);
 @import url(../blocks/gallary/__delete/gallery__delete.css);
 @import url(../blocks/gallary/__caption/gallery__caption.css);
 

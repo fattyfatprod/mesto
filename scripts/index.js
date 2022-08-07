@@ -118,31 +118,31 @@ function handleSubmitAddCardForm(evt) {
   const cardElement = createCard(newCard.name, newCard.link)
 
   // Добавляем новую карточку в начало галереи 
-  profileAddCard(cardElement)
+  addCard(cardElement)
 
   // Очищаем поля ввода
   evt.target.reset()
 
   // Закрытие формы
-  profileClosePopup(popupElementCard)
+  closePopup(popupElementCard)
 }
 
-function profileAddCard(cardElement) {
+function addCard(cardElement) {
   // Добавляем карточку в начало галереи
   galleryContainer.prepend(cardElement)
 }
 
 // Объявляем функцию открытия попапа
 function openPopup(popup) {
-  popup.classList.add('popup_opened')
+  popup.classList.add('popup_opend')
   // Вешаем слушатель события для закрытия по Esc и клику по оверлею
   document.addEventListener('keyup', closeByEsc)
   popup.addEventListener('click', closeByClick)
 }
 
 // Объявляем функцию закрытия попапа
-function profileClosePopup(popup) {
-  popup.classList.remove('popup_opened')
+function closePopup(popup) {
+  popup.classList.remove('popup_opend')
   // При закрытии формы удаляем слушатели
   document.removeEventListener('keyup', closeByEsc)
   popup.removeEventListener('click', closeByClick)
@@ -151,15 +151,15 @@ function profileClosePopup(popup) {
 // Функция закрытия при нажатии на esc
 function closeByEsc(evt) {
   if (evt.key === 'Escape') {
-    const openedPopup = document.querySelector('.popup_opened')
-    profileClosePopup(openedPopup)
+    const openedPopup = document.querySelector('.popup_opend')
+    closePopup(openedPopup)
   }
 }
 
 // Функция закрытия попапа кликом на оверлей 
 function closeByClick(evt) {
-  if (evt.target.classList.contains('popup_opened')) {
-    profileClosePopup(evt.target)
+  if (evt.target.classList.contains('popup_opend')) {
+    closePopup(evt.target)
   }
 }
 
@@ -169,13 +169,13 @@ popupElementProfile.addEventListener('submit', handleSubmitEditProfileForm)
 
 // Обработка кнопки Редактировать, открываем форму profile
 profileEditButton.addEventListener('click', () => {
-  profileOpenPopup(popupElementProfile)
+  openPopup(popupElementProfile)
   popupValitatorProfile.resetValidation()
 })
 
 // Обработка кнопки крестика, закрываем форму profile
 popupProfilecloseButton.addEventListener('click', () => {
-  profileClosePopup(popupElementProfile)
+  closePopup(popupElementProfile)
 })
 
 // Прикрепляем обработчик к кнопке сохранить в форме добавления карточки:
@@ -184,25 +184,25 @@ popupElementCard.addEventListener('submit', handleSubmitAddCardForm)
 
 // Обработка кнопки Редактировать, открываем форму рекдактирования карточки
 profileAddButton.addEventListener('click', () => {
-  profileOpenPopup(popupElementCard)
+ openPopup(popupElementCard)
 
   popupValitatorCard.resetValidation()
 })
 
 // Обработка кнопки крестика, закрываем форму редактирования карточки
 popupCardcloseButton.addEventListener('click', () => {
-  profileClosePopup(popupElementCard)
+  closePopup(popupElementCard)
 })
 
 // Обработка кнопки крестика, закрываем фуллскрин
 popupFullscreencloseButton.addEventListener('click', () => {
-  FullscreenClosePopup(popupElementFullscreen)
+  closePopup(popupElementFullscreen)
 })
 
 // Проходимся по всем элементам, создаем карточки и добавляем их в галерею
 initialCards.forEach(element => {
   const cardElement = createCard(element.name, element.link)
-  profileAddCard(cardElement);
+  addCard(cardElement);
 })
 
 //Переносим данные из формвалидатор
@@ -214,15 +214,16 @@ popupValitatorCard.enableValidation()
 
 //Объявяем функцию новой ваилидной карточки 
 function createCard(newCardName, newCardLink) {
-  const card = new Card(newCardName, newCardLink, '#card-template', openPopup, handleCardClick,)
+  const card = new Card(newCardName, newCardLink, '#card-template', openPopup,  handleCardClick,)
   return card.generateCard();
 }
 
 //Переносим данные в попап
 function handleCardClick(name, link) {
-  imageFullscreen.src = link
   imageFullscreen.alt = name
+  imageFullscreen.src = link
   imageCaption.textContent = name
+  
   
   
 

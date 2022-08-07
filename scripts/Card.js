@@ -1,11 +1,12 @@
 export class Card {
     // Передаем в конструктор все данные необходимые для создания карточки
-    constructor(name, link, templateSelector, handleCardClick) {
+    constructor(name, link, templateSelector, openPopup, handleCardClick) {
         this._name = name;
         this._link = link;
         this._templateSelector = templateSelector;
         // Передаем функцию для открытия фулскрин
         this._handleCardClick = handleCardClick;
+        this._openPopup = openPopup;
     }
 
     _getTemplate() {
@@ -52,7 +53,7 @@ export class Card {
 
         // Добавляем слушатель на открытие в фуллскрин
         this._galleryImage.addEventListener('click', () => {
-            this._handleCardClick(this._name, this._link);
+            this._handleCardClick();
         })
     }
 
