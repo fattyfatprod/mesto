@@ -1,33 +1,7 @@
 
-//Ссыки на карточки
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
 
 
+import { initialCards } from "./initialCards.js"
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
 
@@ -184,7 +158,7 @@ popupElementCard.addEventListener('submit', handleSubmitAddCardForm)
 
 // Обработка кнопки Редактировать, открываем форму рекдактирования карточки
 profileAddButton.addEventListener('click', () => {
- openPopup(popupElementCard)
+  openPopup(popupElementCard)
 
   popupValitatorCard.resetValidation()
 })
@@ -214,7 +188,7 @@ popupValitatorCard.enableValidation()
 
 //Объявяем функцию новой ваилидной карточки 
 function createCard(newCardName, newCardLink) {
-  const card = new Card(newCardName, newCardLink, '#card-template', openPopup,  handleCardClick,)
+  const card = new Card(newCardName, newCardLink, '#card-template', openPopup, handleCardClick,)
   return card.generateCard();
 }
 
@@ -223,9 +197,9 @@ function handleCardClick(name, link) {
   imageFullscreen.alt = name
   imageFullscreen.src = link
   imageCaption.textContent = name
-  
-  
-  
+
+
+
 
   openPopup(popupElementFullscreen);
 }

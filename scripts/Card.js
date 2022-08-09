@@ -1,12 +1,13 @@
 export class Card {
     // Передаем в конструктор все данные необходимые для создания карточки
-    constructor(name, link, templateSelector, openPopup, handleCardClick) {
+    constructor(name, link, templateSelector,  initialCard, handleCardClick) {
         this._name = name;
         this._link = link;
         this._templateSelector = templateSelector;
         // Передаем функцию для открытия фулскрин
         this._handleCardClick = handleCardClick;
-        this._openPopup = openPopup;
+        this._initialCard = initialCard;
+        
     }
 
     _getTemplate() {
@@ -30,13 +31,12 @@ export class Card {
 
         // Подпись карточки
         this._element.querySelector('.gallery__text').textContent = this._name;
-
         // Присваиваем значения атрибутам картинок
         this._galleryImage.alt = this._name;
         this._galleryImage.src = this._link;
 
 
-    
+
         return this._element;
     }
 
