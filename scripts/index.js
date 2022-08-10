@@ -1,9 +1,7 @@
-
-
-
-import { initialCards } from "./initialCards.js"
+import { initialCards } from "./initialCards.js";
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
+
 
 const validationConfig = {
   formSelector: '.form',
@@ -188,7 +186,7 @@ popupValitatorCard.enableValidation()
 
 //Объявяем функцию новой ваилидной карточки 
 function createCard(newCardName, newCardLink) {
-  const card = new Card(newCardName, newCardLink, '#card-template', openPopup, handleCardClick,)
+  const card = new Card(newCardName, newCardLink, '#card-template', handleCardClick,)
   return card.generateCard();
 }
 

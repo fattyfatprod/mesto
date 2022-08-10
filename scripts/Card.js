@@ -1,13 +1,13 @@
 export class Card {
     // Передаем в конструктор все данные необходимые для создания карточки
-    constructor(name, link, templateSelector,  initialCard, handleCardClick) {
+    constructor(name, link, templateSelector,  handleCardClick) {
         this._name = name;
         this._link = link;
         this._templateSelector = templateSelector;
         // Передаем функцию для открытия фулскрин
         this._handleCardClick = handleCardClick;
-        this._initialCard = initialCard;
         
+
     }
 
     _getTemplate() {
@@ -26,6 +26,7 @@ export class Card {
         this._galleryImage = this._element.querySelector('.gallery__image');
         this._galleryLike = this._element.querySelector('.gallery__like');
         this._galleryDelete = this._element.querySelector('.gallery__delete');
+    
         this._setEventListeners();
 
 
@@ -56,6 +57,7 @@ export class Card {
             this._handleCardClick();
         })
     }
+
 
     // Обработчик для кнопки лайк
     _handleLikeClick() {
