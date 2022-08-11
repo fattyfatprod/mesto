@@ -1,13 +1,14 @@
 export class Card {
     // Передаем в конструктор все данные необходимые для создания карточки
-    constructor(name, link, templateSelector,  handleCardClick) {
+    constructor( name, link, templateSelector, handleCardClick ) {
         this._name = name;
         this._link = link;
         this._templateSelector = templateSelector;
         // Передаем функцию для открытия фулскрин
         this._handleCardClick = handleCardClick;
         
-
+        
+        
     }
 
     _getTemplate() {
@@ -26,7 +27,7 @@ export class Card {
         this._galleryImage = this._element.querySelector('.gallery__image');
         this._galleryLike = this._element.querySelector('.gallery__like');
         this._galleryDelete = this._element.querySelector('.gallery__delete');
-    
+        
         this._setEventListeners();
 
 
@@ -35,7 +36,7 @@ export class Card {
         // Присваиваем значения атрибутам картинок
         this._galleryImage.alt = this._name;
         this._galleryImage.src = this._link;
-
+        
 
 
         return this._element;
@@ -53,9 +54,13 @@ export class Card {
         });
 
         // Добавляем слушатель на открытие в фуллскрин
-        this._galleryImage.addEventListener('click', () => {
-            this._handleCardClick();
-        })
+               this._galleryImage.addEventListener('click', () => {
+                this._handleCardClick(this._name, this._link);
+            })
+            
+
+
+        
     }
 
 
@@ -68,4 +73,7 @@ export class Card {
     _handleDeleteClick() {
         this._element.remove();
     }
+
 }
+
+

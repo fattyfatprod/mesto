@@ -191,10 +191,13 @@ function createCard(newCardName, newCardLink) {
 }
 
 //Переносим данные в попап
-function handleCardClick(name, link) {
+function handleCardClick(name, link, ) {
   imageFullscreen.alt = name
   imageFullscreen.src = link
   imageCaption.textContent = name
+
+
+  
 
 
 
