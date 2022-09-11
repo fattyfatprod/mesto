@@ -1,6 +1,9 @@
 import { initialCards } from "./initialCards.js";
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
+import { Section } from "./Section.js";
+
+
 
 
 const validationConfig = {
@@ -103,37 +106,33 @@ function addCard(cardElement) {
   // Добавляем карточку в начало галереи
   galleryContainer.prepend(cardElement)
 }
-
-// Объявляем функцию открытия попапа
-function openPopup(popup) {
-  popup.classList.add('popup_opend')
-  // Вешаем слушатель события для закрытия по Esc и клику по оверлею
-  document.addEventListener('keyup', closeByEsc)
-  popup.addEventListener('click', closeByClick)
-}
-
-// Объявляем функцию закрытия попапа
-function closePopup(popup) {
-  popup.classList.remove('popup_opend')
-  // При закрытии формы удаляем слушатели
-  document.removeEventListener('keyup', closeByEsc)
-  popup.removeEventListener('click', closeByClick)
-}
-
-// Функция закрытия при нажатии на esc
-function closeByEsc(evt) {
-  if (evt.key === 'Escape') {
-    const openedPopup = document.querySelector('.popup_opend')
-    closePopup(openedPopup)
-  }
-}
-
-// Функция закрытия попапа кликом на оверлей 
-function closeByClick(evt) {
-  if (evt.target.classList.contains('popup_opend')) {
-    closePopup(evt.target)
-  }
-}
+ // Объявляем функцию открытия попапа
+ function openPopup(popup) {
+   popup.classList.add('popup_opend')
+   // Вешаем слушатель события нажатия кнопки и клика для закрытия по Esc и клику по оверлею
+   document.addEventListener('keyup', closeByEsc)
+   popup.addEventListener('click', closeByClick)
+ }
+ // Объявляем функцию закрытия попапа
+ function closePopup(popup) {
+   popup.classList.remove('popup_opend')
+   // При закрытии формы удаляем слушатели
+   document.removeEventListener('keyup', closeByEsc)
+   popup.removeEventListener('click', closeByClick)
+ }
+ // Функция закрытия при нажатии на esc
+ function closeByEsc(evt) {
+   if (evt.key === 'Escape') {
+     const openedPopup = document.querySelector('.popup_opend')
+     closePopup(openedPopup)
+   }
+ }
+ // Функция закрытия попапа кликом на оверлей 
+ function closeByClick(evt) {
+   if (evt.target.classList.contains('popup_opend')) {
+     closePopup(evt.target)
+   }
+ }
 
 // Прикрепляем обработчик к кнопке сохранить в форме profile:
 // он будет следить за событием “submit” - «отправка»
@@ -172,10 +171,16 @@ popupFullscreencloseButton.addEventListener('click', () => {
 })
 
 // Проходимся по всем элементам, создаем карточки и добавляем их в галерею
-initialCards.forEach(element => {
-  const cardElement = createCard(element.name, element.link)
-  addCard(cardElement);
-})
+const CardsList = new Section({
+  items: initialCards,
+  renderer: (item) => {
+    const cardElement = createCard(item.name, item.link)
+    CardsList.addItem(cardElement);
+  }
+}, '.gallery');
+
+CardsList.renderItems()
+
 
 //Переносим данные из формвалидатор
 
@@ -195,12 +200,6 @@ function handleCardClick(name, link, ) {
   imageFullscreen.alt = name
   imageFullscreen.src = link
   imageCaption.textContent = name
-
-
-  
-
-
-
-
   openPopup(popupElementFullscreen);
 }
+
