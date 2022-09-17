@@ -1,12 +1,13 @@
 import { initialCards } from "./initialCards.js";
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
-import { Section } from "./Section.js";
+import  Section  from "./Section.js";
+import PopupWithImage from "./PopupWithImage.js";
 
 
 
 
-const validationConfig = {
+const data = {
   formSelector: '.form',
   inputSelector: '.form__input',
   submitButtonSelector: '.form__submit',
@@ -106,33 +107,7 @@ function addCard(cardElement) {
   // Добавляем карточку в начало галереи
   galleryContainer.prepend(cardElement)
 }
- // Объявляем функцию открытия попапа
- function openPopup(popup) {
-   popup.classList.add('popup_opend')
-   // Вешаем слушатель события нажатия кнопки и клика для закрытия по Esc и клику по оверлею
-   document.addEventListener('keyup', closeByEsc)
-   popup.addEventListener('click', closeByClick)
- }
- // Объявляем функцию закрытия попапа
- function closePopup(popup) {
-   popup.classList.remove('popup_opend')
-   // При закрытии формы удаляем слушатели
-   document.removeEventListener('keyup', closeByEsc)
-   popup.removeEventListener('click', closeByClick)
- }
- // Функция закрытия при нажатии на esc
- function closeByEsc(evt) {
-   if (evt.key === 'Escape') {
-     const openedPopup = document.querySelector('.popup_opend')
-     closePopup(openedPopup)
-   }
- }
- // Функция закрытия попапа кликом на оверлей 
- function closeByClick(evt) {
-   if (evt.target.classList.contains('popup_opend')) {
-     closePopup(evt.target)
-   }
- }
+ 
 
 // Прикрепляем обработчик к кнопке сохранить в форме profile:
 // он будет следить за событием “submit” - «отправка»
@@ -171,35 +146,36 @@ popupFullscreencloseButton.addEventListener('click', () => {
 })
 
 // Проходимся по всем элементам, создаем карточки и добавляем их в галерею
-const CardsList = new Section({
+
+const section = new Section({
   items: initialCards,
   renderer: (item) => {
     const cardElement = createCard(item.name, item.link)
-    CardsList.addItem(cardElement);
+    section.addItem(cardElement);
   }
 }, '.gallery');
 
-CardsList.renderItems()
+section.renderItems()
 
 
 //Переносим данные из формвалидатор
 
-const popupValitatorProfile = new FormValidator(validationConfig, popupElementProfile)
+const popupValitatorProfile = new FormValidator(data, popupElementProfile)
 popupValitatorProfile.enableValidation()
-const popupValitatorCard = new FormValidator(validationConfig, popupElementCard)
+const popupValitatorCard = new FormValidator(data, popupElementCard)
 popupValitatorCard.enableValidation()
 
 //Объявяем функцию новой ваилидной карточки 
 function createCard(newCardName, newCardLink) {
-  const card = new Card(newCardName, newCardLink, '#card-template', handleCardClick,)
+  const card = new Card(newCardName, newCardLink, '#card-template',  handleCardClick,)
+  
   return card.generateCard();
+
 }
 
 //Переносим данные в попап
-function handleCardClick(name, link, ) {
-  imageFullscreen.alt = name
-  imageFullscreen.src = link
-  imageCaption.textContent = name
-  openPopup(popupElementFullscreen);
+const popupWithImage = new PopupWithImage('.popup_type_fs')
+function handleCardClick(name, link) {
+  popupWithImage.open(name, link)
 }
-
+export {imageFullscreen, imageCaption}
